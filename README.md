@@ -1,16 +1,17 @@
-## Hi there 👋
+# Hi there, I'm Brijesh Tripathi 👋
 
-<!--
-**btripathi2/btripathi2** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### 🚀 About Me
+I am a passionate developer from Noida, India. I love learning new technologies, writing clean code, and solving real-world problems.
 
-Here are some ideas to get you started:
+- 💻 Currently working on: Building my foundational coding projects
+- 📚 Currently learning: Advanced SQL, python & Full-Stack Development
+- ⚡ Fun fact: I love exploring new tech stacks and optimizing workflows
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🛠️ Tech Stack & Skills
+- **Languages:** Python, HTML, CSS, C, C++
+- **Tools & Platforms:** Git, GitHub, VS Code
+
+---
+
+### 🤝 Connect with Me
+- **LinkedIn:** [Brijesh Tripathi](https://www.linkedin.com/in/brijesh-tripathi-254045ab/)
