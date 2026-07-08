@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brijesh Chandra Tripathi — Sr. Team Lead, Data & Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1420;
+    --bg-alt:#0F1D2E;
+    --panel:#132234;
+    --panel-hi:#17293D;
+    --line:#22394F;
+    --text:#E7EEF6;
+    --text-dim:#8FA3B8;
+    --text-faint:#5C7288;
+    --teal:#2FE0C4;
+    --teal-dim:#1B7F6E;
+    --amber:#F5A623;
+    --rose:#E8637A;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(47,224,196,0.08), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(232,99,122,0.06), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:'Sora', sans-serif;}
+
+  ::selection{ background:var(--teal); color:#06120F; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,20,32,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:700; font-size:16px; letter-spacing:0.02em;}
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 4px rgba(47,224,196,0.15); animation:pulse 2.4s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(47,224,196,0.35);}
+    70%{box-shadow:0 0 0 8px rgba(47,224,196,0);}
+    100%{box-shadow:0 0 0 0 rgba(47,224,196,0);}
+  }
+  nav.links{display:flex; gap:28px; font-size:13.5px; color:var(--text-dim);}
+  nav.links a{transition:color .2s;}
+  nav.links a:hover{color:var(--teal);}
+  .nav-cta{
+    font-size:13px; font-family:'IBM Plex Mono'; color:var(--teal);
+    border:1px solid var(--teal-dim); padding:8px 14px; border-radius:8px;
+    transition:background .2s, color .2s;
+  }
+  .nav-cta:hover{background:var(--teal); color:#06120F;}
+  @media (max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- HERO / DASHBOARD ---------- */
+  .hero{padding:64px 0 40px;}
+  .status-line{
+    display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--teal);
+    text-transform:uppercase; letter-spacing:0.12em; margin-bottom:22px;
+  }
+  .status-line::before{content:"●"; font-size:9px; color:var(--teal);}
+
+  .hero-grid{
+    display:grid; grid-template-columns:1.35fr 0.85fr; gap:28px; align-items:stretch;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero-title{
+    font-size:clamp(34px,5vw,54px); font-weight:800; line-height:1.08; letter-spacing:-0.01em;
+  }
+  .hero-title .accent{color:var(--teal);}
+  .hero-sub{
+    margin-top:18px; font-size:16.5px; color:var(--text-dim); max-width:560px;
+  }
+  .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;}
+  .tag{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--text-dim);
+    border:1px solid var(--line); padding:6px 11px; border-radius:20px; background:var(--panel);
+  }
+  .hero-contact{
+    margin-top:28px; display:flex; flex-wrap:wrap; gap:18px; font-size:13.5px; color:var(--text-dim);
+  }
+  .hero-contact a:hover{color:var(--teal);}
+
+  /* profile card */
+  .profile-card{
+    background:linear-gradient(180deg, var(--panel-hi), var(--panel));
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; display:flex; flex-direction:column; gap:16px;
+    position:relative; overflow:hidden;
+  }
+  .profile-card::after{
+    content:"PROFILE.LOG"; position:absolute; top:12px; right:16px;
+    font-family:'IBM Plex Mono'; font-size:10px; color:var(--text-faint); letter-spacing:0.1em;
+  }
+  .profile-photo{
+    width:100%; aspect-ratio:4/5; border-radius:10px; overflow:hidden;
+    border:1px solid var(--line); background:var(--bg-alt);
+  }
+  .profile-photo img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:saturate(1.03) contrast(1.02);}
+  .profile-name{font-family:'Sora'; font-weight:700; font-size:19px;}
+  .profile-role{font-size:13px; color:var(--teal); font-family:'IBM Plex Mono';}
+  .profile-loc{font-size:12.5px; color:var(--text-dim);}
+
+  /* metric strip */
+  .metrics{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:26px;
+  }
+  @media (max-width:760px){ .metrics{grid-template-columns:repeat(2,1fr);} }
+  .metric{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 18px 16px;
+  }
+  .metric .num{font-family:'Sora'; font-weight:800; font-size:30px; color:var(--text);}
+  .metric .num .unit{font-size:16px; color:var(--teal); font-weight:700;}
+  .metric .label{margin-top:4px; font-size:12px; color:var(--text-dim); font-family:'IBM Plex Mono'; letter-spacing:0.02em;}
+  .metric .bar{margin-top:12px; height:4px; border-radius:3px; background:var(--line); overflow:hidden;}
+  .metric .bar span{display:block; height:100%; background:var(--teal); border-radius:3px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:64px 0;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:34px;}
+  .sec-idx{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--text-faint);}
+  .sec-title{font-size:26px; font-weight:700;}
+  .sec-line{flex:1; height:1px; background:var(--line);}
+
+  /* ---------- ABOUT ---------- */
+  .about-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; font-size:15.5px; color:var(--text-dim);
+  }
+  .about-panel strong{color:var(--text); font-weight:600;}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:760px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+  }
+  .skill-panel h3{font-size:14px; color:var(--amber); font-family:'IBM Plex Mono'; letter-spacing:0.04em; margin-bottom:16px; text-transform:uppercase; font-weight:600;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13px; padding:7px 13px; border-radius:8px; background:var(--bg-alt);
+    border:1px solid var(--line); color:var(--text);
+  }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--line);
+  }
+  .role{position:relative; padding-bottom:40px;}
+  .role:last-child{padding-bottom:0;}
+  .role::before{
+    content:""; position:absolute; left:-28px; top:5px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--teal);
+  }
+  .role-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:6px;}
+  .role-title{font-family:'Sora'; font-weight:700; font-size:17px;}
+  .role-period{font-family:'IBM Plex Mono'; font-size:12px; color:var(--teal); white-space:nowrap;}
+  .role-company{font-size:13px; color:var(--text-faint); margin-bottom:12px;}
+  .role ul{padding-left:18px; color:var(--text-dim); font-size:14.5px; display:flex; flex-direction:column; gap:6px;}
+  .role ul li::marker{color:var(--teal-dim);}
+
+  /* ---------- CERTS ---------- */
+  .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:760px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    transition:border-color .2s, transform .2s;
+  }
+  .cert-card:hover{border-color:var(--teal-dim); transform:translateY(-2px);}
+  .cert-name{font-weight:600; font-size:14.5px; margin-bottom:4px;}
+  .cert-issuer{font-size:12.5px; color:var(--text-dim);}
+  .cert-date{font-family:'IBM Plex Mono'; font-size:11px; color:var(--text-faint); margin-top:8px;}
+  .cert-arrow{font-size:16px; color:var(--teal); flex-shrink:0;}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  .edu-deg{font-weight:700; font-size:15.5px;}
+  .edu-school{font-size:13.5px; color:var(--text-dim); margin-top:3px;}
+  .edu-period{font-family:'IBM Plex Mono'; font-size:12px; color:var(--teal);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:44px 0 36px; margin-top:20px;}
+  .footer-inner{display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;}
+  .footer-cta{font-family:'Sora'; font-weight:700; font-size:22px; max-width:420px;}
+  .footer-links{display:flex; gap:22px; font-size:13.5px; color:var(--text-dim);}
+  .footer-links a:hover{color:var(--teal);}
+  .footer-bottom{margin-top:26px; font-size:12px; color:var(--text-faint); font-family:'IBM Plex Mono';}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .brand .dot{animation:none;}
+  }
+
+  a:focus-visible, .cert-card:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:6px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span> BRIJESH.TRIPATHI</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+    </nav>
+    <a class="nav-cta" href="mailto:btripathi2@live.com">Get in touch</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="status-line">Operations dashboard — live profile</div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">Turning ticket queues<br>into <span class="accent">KPI dashboards.</span></h1>
+        <p class="hero-sub">Sr. Team Lead with 12 years across tech support and fintech operations — leading 15–20 person teams while building the SQL, Power BI, and cloud-data pipelines that tell leadership what's actually happening on the floor.</p>
+        <div class="hero-tags">
+          <span class="tag">SQL / PostgreSQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Looker</span>
+          <span class="tag">Python</span>
+          <span class="tag">Zendesk · Jira · ServiceNow</span>
+        </div>
+        <div class="hero-contact">
+          <a href="tel:+919650277472">+91 96502 77472</a>
+          <a href="mailto:btripathi2@live.com">btripathi2@live.com</a>
+          <span>Noida, India</span>
+          <a href="#" id="linkedinLink">LinkedIn ↗</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric reveal">
+            <div class="num">12<span class="unit">yrs</span></div>
+            <div class="label">EXPERIENCE</div>
+            <div class="bar"><span style="width:92%"></span></div>
+          </div>
+          <div class="metric reveal">
+            <div class="num">15–20</div>
+            <div class="label">TEAM SIZE LED</div>
+            <div class="bar"><span style="width:78%"></span></div>
+          </div>
+          <div class="metric reveal">
+            <div class="num">4</div>
+            <div class="label">CERTIFICATIONS</div>
+            <div class="bar"><span style="width:65%"></span></div>
+          </div>
+          <div class="metric reveal">
+            <div class="num">4<span class="unit">roles</span></div>
+            <div class="label">CAREER PROGRESSION</div>
+            <div class="bar"><span style="width:100%"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card reveal">
+        <div class="profile-photo">
+          <img src="https://lh3.googleusercontent.com/d/1qnp2EseWys4tE_qUidkR2WuD-AL7WTIz" alt="Portrait of Brijesh Chandra Tripathi">
+        </div>
+        <div>
+          <div class="profile-name">Brijesh Chandra Tripathi</div>
+          <div class="profile-role">Sr. Team Lead — Data &amp; Operations</div>
+          <div class="profile-loc mono">iEnergizer · Noida, UP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head"><span class="sec-idx">01</span><h2 class="sec-title">Summary</h2><div class="sec-line"></div></div>
+    <div class="about-panel reveal">
+      <strong>Brijesh</strong> is a Senior Team Lead with 12 years of experience spanning technical support and fintech operations. He specializes in <strong>SQL, Power BI, and cloud data</strong> — converting raw operational data into interactive dashboards that drive KPI performance. Over four progressive roles at iEnergizer, he has moved from front-line support into leading teams of 15–20 people, partnering with stakeholders to turn reporting requirements into actionable insight that shapes process optimization and business growth.
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-head"><span class="sec-idx">02</span><h2 class="sec-title">Skills</h2><div class="sec-line"></div></div>
+    <div class="skills-grid">
+      <div class="skill-panel reveal">
+        <h3>Domain &amp; Operational Expertise</h3>
+        <div class="chip-row">
+          <span class="chip">Team Leadership</span>
+          <span class="chip">People Management</span>
+          <span class="chip">Process Optimization</span>
+          <span class="chip">Workflow Management</span>
+        </div>
+      </div>
+      <div class="skill-panel reveal">
+        <h3>Databases &amp; Query Languages</h3>
+        <div class="chip-row">
+          <span class="chip">SQL</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">Database Management</span>
+        </div>
+      </div>
+      <div class="skill-panel reveal">
+        <h3>Data Visualization &amp; BI</h3>
+        <div class="chip-row">
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Looker</span>
+          <span class="chip">Zendesk Explore</span>
+          <span class="chip">Dashboard Creation</span>
+          <span class="chip">KPI Monitoring</span>
+        </div>
+      </div>
+      <div class="skill-panel reveal">
+        <h3>Platforms &amp; Tools</h3>
+        <div class="chip-row">
+          <span class="chip">Zendesk</span>
+          <span class="chip">Jira</span>
+          <span class="chip">ServiceNow</span>
+          <span class="chip">Advanced Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head"><span class="sec-idx">03</span><h2 class="sec-title">Experience</h2><div class="sec-line"></div></div>
+    <div class="timeline">
+
+      <div class="role reveal">
+        <div class="role-head">
+          <div class="role-title">Sr. Team Lead</div>
+          <div class="role-period">OCT 2019 — PRESENT</div>
+        </div>
+        <div class="role-company">iEnergizer · Noida · Full-Time</div>
+        <ul>
+          <li>Led a team of 15–20 members, leveraging data analytics to drive operational performance and strategic decision-making.</li>
+          <li>Developed interactive dashboards and automated reports using SQL Server, Tableau, Looker, and Excel for real-time KPI visibility.</li>
+          <li>Performed data analysis, trend identification, forecasting, and root cause analysis to improve productivity and service outcomes.</li>
+          <li>Partnered with stakeholders to define reporting requirements and deliver insights that supported process optimization and growth.</li>
+        </ul>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-head">
+          <div class="role-title">Analyst</div>
+          <div class="role-period">MAR 2017 — SEP 2019</div>
+        </div>
+        <div class="role-company">iEnergizer · Noida · Full-Time</div>
+        <ul>
+          <li>Analyzed customer support and operational data to identify trends, optimize workflows, and improve service performance.</li>
+          <li>Conducted ticket volume, backlog, and workforce utilization analysis to support capacity planning and resource allocation.</li>
+          <li>Monitored CSAT, DSAT, SLA, and productivity metrics, driving initiatives that improved satisfaction and efficiency.</li>
+          <li>Delivered ad-hoc reporting, KPI tracking, and performance analysis enabling data-driven business decisions.</li>
+        </ul>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-head">
+          <div class="role-title">Customer Support Executive</div>
+          <div class="role-period">JUL 2015 — JAN 2017</div>
+        </div>
+        <div class="role-company">iEnergizer · Noida · Full-Time</div>
+        <ul>
+          <li>Delivered support to a global gaming customer base across chat, email, phone, and voicemail, exceeding quality targets.</li>
+          <li>Resolved account, billing, payment, and gameplay issues while maintaining high CSAT and first-contact resolution.</li>
+          <li>Managed escalated player inquiries and retention cases, ensuring timely resolution and positive experiences.</li>
+          <li>Contributed to knowledge base improvements, reducing handling time; mentored new support specialists.</li>
+        </ul>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-head">
+          <div class="role-title">Desktop Support Engineer</div>
+          <div class="role-period">JUL 2014 — JAN 2015</div>
+        </div>
+        <div class="role-company">Aforeserve · Noida · Full-Time</div>
+        <ul>
+          <li>Diagnosed and fixed hardware, software, and network issues, minimizing system downtime.</li>
+          <li>Implemented remote troubleshooting solutions, decreasing on-site visit requirements.</li>
+          <li>Ensured 100% compliance with IT security policies, reducing vulnerabilities and cyber risks.</li>
+          <li>Assisted with system upgrades and patch management, improving overall system stability.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="sec-head"><span class="sec-idx">04</span><h2 class="sec-title">Certifications</h2><div class="sec-line"></div></div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div>
+          <div class="cert-name">SQL Beginner to Advanced For Data Professionals</div>
+          <div class="cert-issuer">Codebasics</div>
+          <div class="cert-date">ISSUED MAY 2026</div>
+        </div>
+        <div class="cert-arrow">↗</div>
+      </div>
+      <div class="cert-card reveal">
+        <div>
+          <div class="cert-name">Get Job Ready: Power BI Data Analytics for All Levels 3.0</div>
+          <div class="cert-issuer">Codebasics</div>
+          <div class="cert-date">ISSUED MAR 2025</div>
+        </div>
+        <div class="cert-arrow">↗</div>
+      </div>
+      <div class="cert-card reveal">
+        <div>
+          <div class="cert-name">Excel: Mother of Business Intelligence</div>
+          <div class="cert-issuer">Codebasics</div>
+          <div class="cert-date">ISSUED NOV 2023</div>
+        </div>
+        <div class="cert-arrow">↗</div>
+      </div>
+      <div class="cert-card reveal">
+        <div>
+          <div class="cert-name">Training for Zendesk Administrators</div>
+          <div class="cert-issuer">Udemy</div>
+          <div class="cert-date">ISSUED JUL 2023</div>
+        </div>
+        <div class="cert-arrow">↗</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="sec-head"><span class="sec-idx">05</span><h2 class="sec-title">Education</h2><div class="sec-line"></div></div>
+    <div class="edu-row reveal">
+      <div>
+        <div class="edu-deg">Bachelor of Technology — Electronics &amp; Communication</div>
+        <div class="edu-school">GLA Institute of Technology &amp; Management / UPTU, Mathura, Uttar Pradesh</div>
+      </div>
+      <div class="edu-period">JUL 2010 — JUN 2014</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-cta">Looking for someone who can lead the team and own the numbers?</div>
+      <div class="footer-links">
+        <a href="mailto:btripathi2@live.com">Email</a>
+        <a href="tel:+919650277472">Call</a>
+        <a href="#" id="linkedinLink2">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom mono">© 2026 Brijesh Chandra Tripathi · Noida, India</div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Replace with your real LinkedIn URL
+  const linkedinURL = "https://www.linkedin.com/in/your-profile-here";
+  document.getElementById('linkedinLink').href = linkedinURL;
+  document.getElementById('linkedinLink2').href = linkedinURL;
+</script>
+
+</body>
+</section>
+  </main>
+</body>
+</html>
