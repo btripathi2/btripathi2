@@ -51,9 +51,10 @@
   }
   .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 32px; max-width:1180px; margin:0 auto;
+    gap:16px;
+    padding:14px 32px; max-width:1180px; margin:0 auto;
   }
-  .brand{display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:700; font-size:16px; letter-spacing:0.02em;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:700; font-size:16px; letter-spacing:0.02em; flex-shrink:0;}
   .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 4px rgba(47,224,196,0.15); animation:pulse 2.4s infinite;}
   @keyframes pulse{
     0%{box-shadow:0 0 0 0 rgba(47,224,196,0.35);}
@@ -63,13 +64,35 @@
   nav.links{display:flex; gap:28px; font-size:13.5px; color:var(--text-dim);}
   nav.links a{transition:color .2s;}
   nav.links a:hover{color:var(--teal);}
+
+  .nav-actions{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  .icon-btn{
+    width:34px; height:34px; border-radius:8px; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text-dim); transition:color .2s, border-color .2s, background .2s;
+    flex-shrink:0;
+  }
+  .icon-btn svg{width:16px; height:16px; display:block;}
+  .icon-btn:hover{color:var(--teal); border-color:var(--teal-dim); background:var(--panel);}
+
   .nav-cta{
+    display:flex; align-items:center; gap:6px;
     font-size:13px; font-family:'IBM Plex Mono'; color:var(--teal);
     border:1px solid var(--teal-dim); padding:8px 14px; border-radius:8px;
-    transition:background .2s, color .2s;
+    transition:background .2s, color .2s; white-space:nowrap;
   }
+  .nav-cta svg{width:14px; height:14px;}
   .nav-cta:hover{background:var(--teal); color:#06120F;}
-  @media (max-width:760px){ nav.links{display:none;} }
+
+  @media (max-width:760px){
+    nav.links{display:none;}
+    .nav-inner{padding:12px 20px;}
+    .nav-cta span.cta-label{display:none;}
+    .nav-cta{padding:8px 10px;}
+  }
+  @media (max-width:400px){
+    .brand span.brand-label{display:none;}
+  }
 
   /* ---------- HERO / DASHBOARD ---------- */
   .hero{padding:64px 0 40px;}
@@ -220,14 +243,14 @@
     .brand .dot{animation:none;}
   }
 
-  a:focus-visible, .cert-card:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:6px;}
+  a:focus-visible, .cert-card:focus-visible, .icon-btn:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:6px;}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand"><span class="dot"></span> BRIJESH.TRIPATHI</div>
+    <div class="brand"><span class="dot"></span> <span class="brand-label">BRIJESH.TRIPATHI</span></div>
     <nav class="links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -235,7 +258,21 @@
       <a href="#certifications">Certifications</a>
       <a href="#education">Education</a>
     </nav>
-    <a class="nav-cta" href="mailto:btripathi2@live.com">Get in touch</a>
+    <div class="nav-actions">
+      <a class="icon-btn" href="tel:+919650277472" title="Call +91 96502 77472" aria-label="Call Brijesh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a class="icon-btn" href="mailto:btripathi2@live.com" title="Email btripathi2@live.com" aria-label="Email Brijesh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6z"/><path d="m22 6-10 7L2 6"/></svg>
+      </a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/brijesh-tripathi-254045ab" target="_blank" rel="noopener" title="LinkedIn profile" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a class="nav-cta" href="Brijesh_Tripathi_Resume.pdf" download="Brijesh_Tripathi_Resume.pdf" title="Download Resume PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        <span class="cta-label">Resume</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -261,7 +298,8 @@
           <a href="tel:+919650277472">+91 96502 77472</a>
           <a href="mailto:btripathi2@live.com">btripathi2@live.com</a>
           <span>Noida, India</span>
-          <a href="www.linkedin.com/in/brijesh-tripathi-254045ab" id="linkedinLink">LinkedIn ↗</a>
+          <a href="https://www.linkedin.com/in/brijesh-tripathi-254045ab" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="Brijesh_Tripathi_Resume.pdf" download="Brijesh_Tripathi_Resume.pdf">Download Resume ↓</a>
         </div>
 
         <div class="metrics">
@@ -478,7 +516,8 @@
       <div class="footer-links">
         <a href="mailto:btripathi2@live.com">Email</a>
         <a href="tel:+919650277472">Call</a>
-        <a href="#" id="linkedinLink2">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/brijesh-tripathi-254045ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="Brijesh_Tripathi_Resume.pdf" download="Brijesh_Tripathi_Resume.pdf">Resume</a>
       </div>
     </div>
     <div class="footer-bottom mono">© 2026 Brijesh Chandra Tripathi · Noida, India</div>
@@ -494,15 +533,7 @@
     });
   },{threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
-
-  // Replace with your real LinkedIn URL
-  const linkedinURL = "https://www.linkedin.com/in/your-profile-here";
-  document.getElementById('linkedinLink').href = linkedinURL;
-  document.getElementById('linkedinLink2').href = linkedinURL;
 </script>
 
-</body>
-</section>
-  </main>
 </body>
 </html>
